@@ -5,21 +5,22 @@ import Register from "../pages/Register";
 
 const routes: IRouteProps[] = [
 	{
+		index: true,
 		name: "Home",
 		path: "/",
 		element: <Home />,
 		// protected: true,
 	},
-	{
-		index: true,
-		name: "Login",
-		path: "/login",
-		element: <Login />,
-	},
-	{
-		name: "Register",
-		path: "/register",
-		element: <Register />,
-	},
+	// {
+	// 	index: true,
+	// 	name: "Login",
+	// 	path: "/login",
+	// 	element: <Login />,
+	// },
+	// {
+	// 	name: "Register",
+	// 	path: "/register",
+	// 	element: <Register />,
+	// },
 ];
 export default routes;
