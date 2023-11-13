@@ -1,5 +1,5 @@
 import React, { ForwardedRef, forwardRef, useEffect, useRef } from "react";
-import ICustomInputProps from "../../../../interfaces/input.interface";
+import ICustomInputProps from "../../../../../interfaces/input.interface";
 import classNames from "classnames";
 
 const CustomInput = forwardRef(function Input(

@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import * as Icons from "../../atoms/common/icons";
 import CustomIconProps from "../../../../interfaces/icon.interface";
 import classNames from "classnames";
+import SearchBarInput from "../../atoms/common/input/SearchBarInput";
 
 const Navbar = () => {
 	const location = useLocation();
@@ -18,8 +19,8 @@ const Navbar = () => {
 	);
 
 	return (
-		<div className="flex items-center gap-6 sticky top-0 z-50 w-full bg-white shadow-lg shadow-[#5978961A] sm:px-10 lg:px-16 divide-x divide-zinc-200">
-			<div className="pr-5 md:pr-10 py-5">
+		<div className="flex gap-6 sticky top-0 z-50 w-full bg-white shadow-lg shadow-[#5978961A] sm:px-10 lg:px-16 divide-x divide-zinc-200">
+			<div className="pr-5 md:pr-10 py-4">
 				<svg
 					width="46"
 					height="46"
@@ -46,19 +47,19 @@ const Navbar = () => {
 					</defs>
 				</svg>
 			</div>
-			<div className="flex gap-8 items-center px-5 md:px-10 py-5">
+			<div className="flex gap-10 px-5 md:px-8 py-4">
 				{navLinks.map((nav) => {
 					interface IconType {
 						[key: string]: React.ElementType<CustomIconProps>;
 					}
 					const MappedIcon: IconType = Icons;
 					const IconComp = MappedIcon[nav.icon];
-
 					return (
 						<div
 							key={nav.name}
+							onClick={() => setActive(nav.name)}
 							className={classNames(
-								"cursor-pointer flex flex-col items-center relative",
+								"cursor-pointer flex flex-col items-center relative select-none",
 								active === nav.name ? "text-[#0275B1]" : "",
 							)}>
 							<IconComp
@@ -66,12 +67,17 @@ const Navbar = () => {
 								size={30}
 							/>
 							<p className="uppercase text-xs">{nav.name}</p>
-							{active === nav.name && (
-								<div className="absolute -bottom-3 w-full h-[2.5px] bg-[#0275B1] duration-300" />
-							)}
+							<div
+								className={`absolute -bottom-2.5 h-[3px] bg-[#0275B1] duration-300 left-0 ${
+									active === nav.name ? "w-full" : "w-0"
+								}`}
+							/>
 						</div>
 					);
 				})}
+			</div>
+			<div className="flex-grow h-full">
+				<SearchBarInput />
 			</div>
 		</div>
 	);
